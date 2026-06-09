@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XØ Studio — Uffici & Spazi Professionali</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Syne:wght@400;500;600;700;800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;background:#F7F3F0;color:#111;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;display:flex;justify-content:space-between;align-items:center;background:rgba(247,243,240,.98);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,.05)}
+.logo{font-family:'Gill Sans','Gill Sans MT',Calibri,sans-serif;font-size:1.2rem;font-weight:300;color:#111;text-decoration:none}
+.nav-links{display:flex;gap:0;list-style:none}
+.nav-links a{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;font-size:.9rem;font-weight:400;color:#111;text-decoration:none;padding:.4rem 1.2rem;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:#C4B6AD}
+.nav-links a.contact-link{color:#fff;background:#111;padding:.4rem 1.2rem}
+.nav-links a.contact-link:hover{background:#C4B6AD}
+.ham{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:8px}
+.ham span{width:20px;height:1.5px;background:#111}
+@media(max-width:900px){.nav-links{display:none}.ham{display:flex}}
+.nav-drop{position:relative}
+.nav-drop>a::after{content:' ↓';font-size:.5rem;opacity:.4}
+.drop-menu{display:none;position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);background:#F7F3F0;border:1px solid rgba(0,0,0,.08);min-width:220px;padding:.6rem 0;z-index:400}
+.nav-drop:hover .drop-menu{display:block}
+.drop-menu a{display:block;padding:.5rem 1.4rem;font-size:.85rem;color:#111;white-space:nowrap}
+.drop-menu a:hover{background:#EDE8E3}
+.page-header{padding:8rem 2.5rem 2rem}
+.page-header .eyebrow{font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#C4B6AD;margin-bottom:1rem;display:block}
+.page-header h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,6vw,5rem);font-weight:300;font-style:italic;line-height:.95;color:#111}
+.cat-nav{display:flex;gap:0;padding:1.5rem 2.5rem 0;overflow-x:auto;border-bottom:1px solid rgba(0,0,0,.07);margin-bottom:2rem}
+.cat-nav a{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;font-size:.8rem;color:#888;text-decoration:none;padding:.8rem 1.2rem .8rem 0;margin-right:1.5rem;border-bottom:2px solid transparent;white-space:nowrap;transition:all .2s}
+.cat-nav a:hover{color:#111}
+.cat-nav a.active{color:#111;border-bottom-color:#111}
+.progetti-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;padding:0 2.5rem 6vh}
+.progetto-card{position:relative;aspect-ratio:4/3;overflow:hidden;background:#EDE8E3;text-decoration:none;display:block}
+.progetto-card img{width:100%;height:100%;object-fit:cover;filter:brightness(.82);transition:transform .6s,filter .4s}
+.progetto-card:hover img{transform:scale(1.04);filter:brightness(.65)}
+.card-info{position:absolute;bottom:0;left:0;right:0;padding:1.5rem 1.8rem;background:linear-gradient(to top,rgba(0,0,0,.55) 0%,transparent 100%)}
+.progetto-cat{font-family:-apple-system,sans-serif;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);display:block;margin-bottom:.3rem}
+.progetto-nome{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;font-style:italic;color:#fff;line-height:1.2}
+@media(max-width:768px){.progetti-grid{grid-template-columns:1fr;padding:0 1.5rem 4vh}}
+footer{padding:3.5rem 2.5rem 1.5rem;background:#EDE8E3;border-top:1px solid rgba(0,0,0,.06);position:relative;overflow:hidden}
+.ft-watermark{position:absolute;bottom:-4rem;left:-2rem;font-family:'Gill Sans','Gill Sans MT',Calibri,sans-serif;font-size:28rem;font-weight:300;color:rgba(0,0,0,.04);line-height:1;pointer-events:none;user-select:none}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:2.5rem;max-width:950px;margin:0 auto;position:relative;z-index:2}
+.ft-brand .ft-logo{font-family:'Gill Sans','Gill Sans MT',Calibri,sans-serif;font-size:2rem;font-weight:300;color:#111;margin-bottom:.4rem;display:block}
+.ft-brand p{font-size:.85rem;color:#111;line-height:1.8}
+.ft-col h4{font-size:.5rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#C4B6AD;margin-bottom:1rem}
+.ft-col a{display:block;font-size:.9rem;color:#111;text-decoration:none;padding:.25rem 0;transition:color .2s}
+.ft-col a:hover{color:#C4B6AD}
+.ft-bottom{max-width:950px;margin:2rem auto 0;display:flex;justify-content:space-between;padding-top:1.5rem;border-top:1px solid rgba(0,0,0,.06);font-size:.55rem;color:#888;position:relative;z-index:2}
+@media(max-width:768px){.ft-grid{grid-template-columns:1fr;gap:1.5rem}.ft-bottom{flex-direction:column;gap:.5rem}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">XØ</a>
+  <ul class="nav-links">
+    <li class="nav-drop"><a href="progetti.html" class="active">Progetti</a><div class="drop-menu"><a href="progetti-case.html">Case</a><a href="progetti-uffici.html">Uffici &amp; Spazi Professionali</a><a href="progetti-retail.html">Retail &amp; Hospitality</a><a href="progetti-brand.html">Brand &amp; Identity</a><a href="progetti-arte.html">Arte</a></div></li>
+    <li><a href="abitare.html">Abitare</a></li>
+    <li><a href="spatial-identity.html">Spatial Identity</a></li>
+    <li><a href="high-leverage.html">High-Leverage</a></li>
+    <li><a href="brand.html">Brand</a></li>
+    <li><a href="fashion-arte.html">Arte</a></li>
+    <li><a href="contatti.html" class="contact-link">Contatti</a></li>
+  </ul>
+  <div class="ham"><span></span><span></span><span></span></div>
+</nav>
+<div class="page-header">
+  <span class="eyebrow">Commerciale</span>
+  <h1>Uffici & Spazi Professionali</h1>
+</div>
+<nav class="cat-nav">
+  <a href="progetti-case.html">Case</a>
+  <a href="progetti-uffici.html" class="active">Uffici &amp; Spazi Professionali</a>
+  <a href="progetti-retail.html">Retail &amp; Hospitality</a>
+  <a href="progetti-brand.html">Brand &amp; Identity</a>
+  <a href="progetti-arte.html">Arte</a>
+</nav>
+<div class="progetti-grid">
+  <a href="#" class="progetto-card">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0M4QzBCOCIvPjx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMTgpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5Qcm9nZXR0bzwvdGV4dD48L3N2Zz4=" alt="Progetto">
+    <div class="card-info">
+      <span class="progetto-cat">Uffici & Spazi Professionali · Genova</span>
+      <span class="progetto-nome">Titolo progetto</span>
+    </div>
+  </a>
+  <a href="#" class="progetto-card">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0JFQkFBRSIvPjx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMTgpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5Qcm9nZXR0bzwvdGV4dD48L3N2Zz4=" alt="Progetto">
+    <div class="card-info">
+      <span class="progetto-cat">Uffici & Spazi Professionali · Genova</span>
+      <span class="progetto-nome">Titolo progetto</span>
+    </div>
+  </a>
+  <a href="#" class="progetto-card">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0M0QkRCNCIvPjx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMTgpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5Qcm9nZXR0bzwvdGV4dD48L3N2Zz4=" alt="Progetto">
+    <div class="card-info">
+      <span class="progetto-cat">Uffici & Spazi Professionali · Genova</span>
+      <span class="progetto-nome">Titolo progetto</span>
+    </div>
+  </a>
+  <a href="#" class="progetto-card">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0QwQzhDMCIvPjx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMTgpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5Qcm9nZXR0bzwvdGV4dD48L3N2Zz4=" alt="Progetto">
+    <div class="card-info">
+      <span class="progetto-cat">Uffici & Spazi Professionali · Genova</span>
+      <span class="progetto-nome">Titolo progetto</span>
+    </div>
+  </a>
+  <a href="#" class="progetto-card">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0NDQzRCQSIvPjx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMTgpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5Qcm9nZXR0bzwvdGV4dD48L3N2Zz4=" alt="Progetto">
+    <div class="card-info">
+      <span class="progetto-cat">Uffici & Spazi Professionali · Genova</span>
+      <span class="progetto-nome">Titolo progetto</span>
+    </div>
+  </a>
+  <a href="#" class="progetto-card">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0MwQjhCMCIvPjx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMTgpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5Qcm9nZXR0bzwvdGV4dD48L3N2Zz4=" alt="Progetto">
+    <div class="card-info">
+      <span class="progetto-cat">Uffici & Spazi Professionali · Genova</span>
+      <span class="progetto-nome">Titolo progetto</span>
+    </div>
+  </a>
+
+</div>
+<footer>
+  <div class="ft-watermark">XØ</div>
+  <div class="ft-grid">
+    <div class="ft-brand">
+      <span class="ft-logo">XØ</span>
+      <p>The point where space meets identity.<br>Studio di architettura e direzione creativa, Genova.</p>
+    </div>
+    <div class="ft-col">
+      <h4>Studio</h4>
+      <a href="progetti.html">Progetti</a>
+      <a href="abitare.html">Abitare</a>
+      <a href="spatial-identity.html">Spatial Identity</a>
+      <a href="high-leverage.html">High-Leverage</a>
+      <a href="brand.html">Brand</a>
+      <a href="fashion-arte.html">Arte</a>
+    </div>
+    <div class="ft-col">
+      <h4>Contatti</h4>
+      <a href="mailto:xostudio.hq@gmail.com">xostudio.hq@gmail.com</a>
+      <a href="#">P.IVA 02434410995</a>
+      <a href="#">Genova, Italia</a>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <span>© 2026 XØ Studio — Genova, Italia</span>
+    <span>Tutti i diritti riservati</span>
+  </div>
+</footer>
+</body>
+</html>

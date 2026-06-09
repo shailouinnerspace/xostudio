@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XØ Studio — Case</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Playfair+Display:ital,wght@0,400;1,400&family=Syne:wght@400;500;600;700;800&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{overflow-x:hidden}
+body{font-family:'Cormorant Garamond',serif;background:#F5F0EB;color:#111;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;display:flex;justify-content:space-between;align-items:center;background:rgba(245,240,235,.98);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,.08)}
+.logo{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:400;font-style:italic;color:#111;text-decoration:none}
+.nav-links{display:flex;gap:.3rem;list-style:none}
+.nav-links a{font-family:'Syne',sans-serif;font-size:.62rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#111;text-decoration:none;padding:.4rem .8rem;transition:all .2s}
+.nav-links a:hover{color:#C4B6AD}
+.nav-links a.contact-link{color:#fff;background:#111;padding:.4rem 1.2rem}
+.nav-links a.contact-link:hover{background:#C4B6AD}
+.ham{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:8px}
+.ham span{width:20px;height:1.5px;background:#111}
+@media(max-width:900px){.nav-links{display:none}.ham{display:flex}}
+.nav-drop{position:relative}
+.nav-drop>a::after{content:' ↓';font-size:.5rem;opacity:.5}
+.drop-menu{display:none;position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);background:#F5F0EB;border:1px solid rgba(0,0,0,.08);min-width:220px;padding:.6rem 0;z-index:400}
+.nav-drop:hover .drop-menu{display:block}
+.drop-menu a{display:block;padding:.5rem 1.4rem;font-family:'Syne',sans-serif;font-size:.61rem;letter-spacing:.1em;text-transform:uppercase;color:#111;white-space:nowrap}
+.drop-menu a:hover{background:#EDE8E3}
+
+/* HEADER PAGINA */
+.page-header{
+  padding:8rem 2.5rem 3rem;
+  border-bottom:1px solid rgba(0,0,0,.08);
+}
+.page-header .breadcrumb{
+  font-family:'Syne',sans-serif;
+  font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;
+  color:#C4B6AD;margin-bottom:1rem;
+}
+.page-header h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3rem,8vw,7rem);
+  font-weight:300;font-style:italic;line-height:.95;
+  letter-spacing:-.01em;color:#111;
+}
+
+/* CATEGORIE NAV */
+.cat-nav{
+  display:flex;gap:0;
+  border-bottom:1px solid rgba(0,0,0,.08);
+  padding:0 2.5rem;
+  overflow-x:auto;
+}
+.cat-nav a{
+  font-family:'Syne',sans-serif;
+  font-size:.62rem;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:#111;text-decoration:none;
+  padding:1.2rem 1.5rem;
+  border-bottom:2px solid transparent;
+  white-space:nowrap;transition:all .2s;
+}
+.cat-nav a:hover{color:#C4B6AD}
+.cat-nav a.active{border-bottom-color:#111;color:#111}
+
+/* GRIGLIA PROGETTI */
+.progetti-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1.5rem;
+  padding:0 2.5rem 6vh;
+}
+.progetto-card{
+  position:relative;
+  aspect-ratio:4/3;
+  overflow:hidden;
+  background:#EDE8E3;
+  text-decoration:none;
+  display:block;
+}
+.progetto-card img{
+  width:100%;height:100%;
+  object-fit:cover;
+  filter:brightness(.82);
+  transition:transform .6s ease, filter .4s;
+}
+.progetto-card:hover img{
+  transform:scale(1.04);
+  filter:brightness(.65);
+}
+.progetto-card .card-info{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  padding:1.5rem 1.8rem;
+  background:linear-gradient(to top,rgba(0,0,0,.55) 0%,transparent 100%);
+}
+.progetto-card .card-cat{
+  font-family:'Syne',sans-serif;
+  font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(255,255,255,.6);display:block;margin-bottom:.3rem;
+}
+.progetto-card .card-nome{
+  font-family:'Syne',sans-serif;
+  font-size:1.1rem;font-weight:700;
+  color:#fff;line-height:1.2;
+}
+/* Placeholder per card senza foto */
+.progetto-card .placeholder{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#EDE8E3 0%,#E0D8D0 100%);
+  font-family:'Syne',sans-serif;font-size:.55rem;
+  letter-spacing:.15em;text-transform:uppercase;color:rgba(0,0,0,.2);
+}
+
+/* EMPTY STATE */
+.empty{
+  grid-column:1/-1;
+  padding:6rem 2.5rem;text-align:center;
+}
+.empty p{
+  font-family:'Playfair Display',serif;
+  font-size:1.3rem;font-style:italic;color:#C4B6AD;
+}
+
+/* FOOTER minimal */
+.page-footer{
+  padding:2rem 2.5rem;
+  border-top:1px solid rgba(0,0,0,.08);
+  display:flex;justify-content:space-between;align-items:center;
+}
+.page-footer span{
+  font-family:'Syne',sans-serif;
+  font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:#111;
+}
+.page-footer a{
+  font-family:'Syne',sans-serif;
+  font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;
+  color:#C4B6AD;text-decoration:none;
+}
+
+@media(max-width:768px){
+  .progetti-grid{grid-template-columns:repeat(2,1fr)}
+  .cat-nav{padding:0 1rem}
+}
+@media(max-width:480px){
+  .progetti-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">XØ</a>
+  <ul class="nav-links">
+    <li class="nav-drop">
+      <a href="#">Progetti</a>
+      <div class="drop-menu">
+        <a href="progetti-case.html">Case</a>
+        <a href="progetti-uffici.html">Uffici &amp; Spazi Professionali</a>
+        <a href="progetti-retail.html">Retail &amp; Hospitality</a>
+        <a href="progetti-brand.html">Brand &amp; Identity</a>
+        <a href="progetti-arte.html">Arte</a>
+      </div>
+    </li>
+    <li><a href="spatial-identity.html">Spatial Identity</a></li>
+    <li><a href="high-leverage.html">High-Leverage</a></li>
+    <li><a href="abitare.html">Abitare</a></li>
+    <li><a href="brand.html">Brand</a></li>
+    <li><a href="fashion-arte.html">Arte</a></li>
+    <li><a href="contatti.html" class="contact-link">Contatti</a></li>
+  </ul>
+  <div class="ham" onclick="document.querySelector('.mob').classList.add('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="page-header">
+  <p class="breadcrumb"><a href="index.html" style="color:#C4B6AD;text-decoration:none">XØ Studio</a> &nbsp;/&nbsp; Progetti</p>
+  <h1>Case</h1>
+</div>
+
+<nav class="cat-nav">
+  <a href="progetti-case.html" class="active">Case</a>
+  <a href="progetti-uffici.html">Uffici &amp; Spazi Professionali</a>
+  <a href="progetti-retail.html">Retail &amp; Hospitality</a>
+  <a href="progetti-brand.html">Brand &amp; Identity</a>
+  <a href="progetti-arte.html">Arte</a>
+</nav>
+
+<div class="progetti-grid">
+
+  <!-- Progetto 1 — inserisci la tua foto -->
+  <a href="progetto-via-garibaldi.html" class="progetto-card">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0Q0QzhCRSIvPjx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIzMiIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMikiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkFwcGFydGFtZW50byBWaWEgR2FyaWJhbGRpPC90ZXh0Pjwvc3ZnPg==" alt="Appartamento Via Garibaldi">
+    
+    <div class="card-info">
+      <span class="card-cat">Residenziale · Genova</span>
+      <span class="card-nome">Appartamento Via Garibaldi</span>
+    </div>
+  </a>
+
+  <!-- Progetto 2 -->
+  <a href="#" class="progetto-card">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0M4QzBCOCIvPjx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIzMiIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMikiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkFnZ2l1bmdpIGZvdG8gcHJvZ2V0dG88L3RleHQ+PC9zdmc+" style="width:100%;height:100%;object-fit:cover">
+    <div class="card-info">
+      <span class="card-cat">Residenziale · Genova</span>
+      <span class="card-nome">Titolo progetto</span>
+    </div>
+  </a>
+
+  <!-- Progetto 3 -->
+  <a href="#" class="progetto-card">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0M4QzBCOCIvPjx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIzMiIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMikiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkFnZ2l1bmdpIGZvdG8gcHJvZ2V0dG88L3RleHQ+PC9zdmc+" style="width:100%;height:100%;object-fit:cover">
+    <div class="card-info">
+      <span class="card-cat">Residenziale</span>
+      <span class="card-nome">Titolo progetto</span>
+    </div>
+  </a>
+
+
+  <a href="#" class="progetto-card">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0M4QzBCOCIvPjx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMTgpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5Qcm9nZXR0bzwvdGV4dD48L3N2Zz4=" style="width:100%;height:100%;object-fit:cover;filter:brightness(.82)">
+    <div class="card-info">
+      <span class="progetto-cat">Residenziale · Genova</span>
+      <span class="progetto-nome">Titolo progetto</span>
+    </div>
+  </a>
+  <a href="#" class="progetto-card">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0JFQkFBRSIvPjx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMTgpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5Qcm9nZXR0bzwvdGV4dD48L3N2Zz4=" style="width:100%;height:100%;object-fit:cover;filter:brightness(.82)">
+    <div class="card-info">
+      <span class="progetto-cat">Residenziale · Genova</span>
+      <span class="progetto-nome">Titolo progetto</span>
+    </div>
+  </a>
+  <a href="#" class="progetto-card">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0M0QkRCNCIvPjx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMTgpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5Qcm9nZXR0bzwvdGV4dD48L3N2Zz4=" style="width:100%;height:100%;object-fit:cover;filter:brightness(.82)">
+    <div class="card-info">
+      <span class="progetto-cat">Residenziale · Genova</span>
+      <span class="progetto-nome">Titolo progetto</span>
+    </div>
+  </a>
+  <a href="#" class="progetto-card">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0QwQzhDMCIvPjx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMTgpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5Qcm9nZXR0bzwvdGV4dD48L3N2Zz4=" style="width:100%;height:100%;object-fit:cover;filter:brightness(.82)">
+    <div class="card-info">
+      <span class="progetto-cat">Residenziale · Genova</span>
+      <span class="progetto-nome">Titolo progetto</span>
+    </div>
+  </a>
+</div>
+
+<footer class="page-footer">
+  <span>© 2026 XØ Studio</span>
+  <a href="index.html">← Home</a>
+</footer>
+
+</body>
+</html>
