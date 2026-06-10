@@ -64,11 +64,24 @@ footer{padding:3.5rem 2.5rem 1.5rem;background:#EDE8E3;border-top:1px solid rgba
 .ft-col a:hover{color:#C4B6AD}
 .ft-bottom{max-width:950px;margin:2rem auto 0;display:flex;justify-content:space-between;padding-top:1.5rem;border-top:1px solid rgba(0,0,0,.06);font-size:.55rem;color:#888;position:relative;z-index:2}
 @media(max-width:768px){.foto-grid{grid-template-columns:1fr}.foto-grid-2{grid-template-columns:1fr}.brand-grid{grid-template-columns:repeat(2,1fr)}.ft-grid{grid-template-columns:1fr;gap:1.5rem}.ft-bottom{flex-direction:column;gap:.5rem}.page-header{padding:7rem 1.5rem 3rem}.section{padding:4vh 1.5rem}}
+
+/* ── SCHEDE PROGETTI ── */
+.schede-section{padding:4vh 2.5rem 6vh;border-top:1px solid rgba(0,0,0,.06)}
+.schede-section h3{font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#C4B6AD;margin-bottom:2rem}
+.schede-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.scheda-card{position:relative;aspect-ratio:4/3;overflow:hidden;background:#EDE8E3;text-decoration:none;display:block}
+.scheda-card img{width:100%;height:100%;object-fit:cover;filter:brightness(.78);transition:transform .5s,filter .4s}
+.scheda-card:hover img{transform:scale(1.04);filter:brightness(.6)}
+.scheda-card .scheda-info{position:absolute;bottom:0;left:0;right:0;padding:1.2rem 1.5rem;background:linear-gradient(to top,rgba(0,0,0,.6) 0%,transparent 100%)}
+.scheda-card .scheda-nome{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;font-style:italic;color:#fff;line-height:1.2}
+.scheda-card.grande{aspect-ratio:16/6}
+.scheda-card.grande .scheda-nome{font-size:1.6rem}
+@media(max-width:600px){.schede-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <nav>
-  <a href="index.html" class="logo">XØ</a>
+  <a href="index.html" class="logo">X&#216;</a>
   <ul class="nav-links">
     <li class="nav-drop"><a href="progetti.html">Progetti</a><div class="drop-menu"><a href="progetti-case.html">Case</a><a href="progetti-uffici.html">Uffici &amp; Spazi Professionali</a><a href="progetti-retail.html">Retail &amp; Hospitality</a><a href="progetti-brand.html">Brand &amp; Identity</a><a href="progetti-arte.html">Arte</a></div></li>
     <li><a href="abitare.html">Abitare</a></li>
@@ -78,7 +91,12 @@ footer{padding:3.5rem 2.5rem 1.5rem;background:#EDE8E3;border-top:1px solid rgba
     <li><a href="fashion-arte.html">Arte</a></li>
     <li><a href="contatti.html" class="contact-link">Contatti</a></li>
   </ul>
-  <div class="ham"><span></span><span></span><span></span></div>
+  <div class="ham" onclick="document.querySelector('.mob').classList.add('open')"><span></span><span></span><span></span></div>
+</nav>
+<div class="mob">
+  <button class="mob-x" onclick="this.parentElement.classList.remove('open')">&#10005;</button>
+  <a href="index.html">Home</a><a href="progetti.html">Progetti</a><a href="abitare.html">Abitare</a><a href="spatial-identity.html">Spatial Identity</a><a href="high-leverage.html">High-Leverage</a><a href="brand.html">Brand</a><a href="fashion-arte.html">Arte</a><a href="contatti.html">Contatti</a>
+</div>
 </nav>
 
 <div class="page-header">
@@ -86,19 +104,13 @@ footer{padding:3.5rem 2.5rem 1.5rem;background:#EDE8E3;border-top:1px solid rgba
   <h1>Arte e pittura.<br>Mandala su commissione.</h1>
   <p class="sub">Pittura astratta, mandala e opere uniche per trasformare la tua casa in uno spazio che parla di te.</p>
 </div>
-<div class="foto-grid-2">
-  <img src="img/moda_1.jpg" alt="Arte">
-  <img src="img/moda_1b.jpg" alt="Arte">
-</div>
+
 <div class="section">
   <h2>I mandala nascono su commissione.</h2>
   <p>Ogni mandala è un pezzo unico, costruito intorno a chi lo riceve — colori, forme, geometrie e significati scelti in base alla persona o allo spazio che dovrà abitare.</p>
   <p>Non è decorazione. È un oggetto che porta dentro un'intenzione precisa, tradotta in un linguaggio visivo che parla a livelli che le parole non raggiungono.</p>
 </div>
-<div class="foto-grid-2">
-  <img src="img/mandala_2.jpg" alt="Mandala dipinto">
-  <img src="img/mandala1.jpg" alt="Veronica dipinge un mandala">
-</div>
+
 <div class="section">
   <h2>La materia racconta. Il colore parla. La forma rivela.</h2>
   <p>Un tessuto evoca emozioni, sensazioni. Un colore muove memorie. Una forma orienta lo sguardo. Noi diamo ascolto e creiamo quello che ancora non esiste.</p>
@@ -109,6 +121,47 @@ footer{padding:3.5rem 2.5rem 1.5rem;background:#EDE8E3;border-top:1px solid rgba
   <a href="contatti.html" class="btn">Parliamone →</a>
 </div>
 
+<div class="schede-section">
+  <h3>Opere</h3>
+  <div class="schede-grid">
+  <a href="#" class="scheda-card">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0Q0QzhCRSIvPjx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMikiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk11c2V0dGE8L3RleHQ+PC9zdmc+" alt="Musetta" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0Q0QzhCRSIvPjx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMikiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk11c2V0dGE8L3RleHQ+PC9zdmc+'">
+    <div class="scheda-info"><span class="scheda-nome">Musetta</span></div>
+  </a>
+  <a href="#" class="scheda-card">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0M4QkZCNSIvPjx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMikiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkxhIFZvbHBlIGVkIGlsIENvcnZvPC90ZXh0Pjwvc3ZnPg==" alt="La Volpe ed il Corvo" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0M4QkZCNSIvPjx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMikiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkxhIFZvbHBlIGVkIGlsIENvcnZvPC90ZXh0Pjwvc3ZnPg=='">
+    <div class="scheda-info"><span class="scheda-nome">La Volpe ed il Corvo</span></div>
+  </a>
+  <a href="#" class="scheda-card">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0JFQjVBQSIvPjx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMikiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkNvbGlicsOsPC90ZXh0Pjwvc3ZnPg==" alt="Colibrì" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0JFQjVBQSIvPjx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMikiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkNvbGlicsOsPC90ZXh0Pjwvc3ZnPg=='">
+    <div class="scheda-info"><span class="scheda-nome">Colibrì</span></div>
+  </a>
+  <a href="#" class="scheda-card">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0M4QzBCNiIvPjx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMikiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkxlb25lIGdyYW5kZTwvdGV4dD48L3N2Zz4=" alt="Leone grande" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0M4QzBCNiIvPjx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMikiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkxlb25lIGdyYW5kZTwvdGV4dD48L3N2Zz4='">
+    <div class="scheda-info"><span class="scheda-nome">Leone grande</span></div>
+  </a>
+  <a href="#" class="scheda-card">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0MwQjhBRSIvPjx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMikiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkxlb25lIHBpY2NvbG88L3RleHQ+PC9zdmc+" alt="Leone piccolo" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0MwQjhBRSIvPjx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMikiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkxlb25lIHBpY2NvbG88L3RleHQ+PC9zdmc+'">
+    <div class="scheda-info"><span class="scheda-nome">Leone piccolo</span></div>
+  </a>
+  <a href="#" class="scheda-card">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0QwQzhCRSIvPjx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMikiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkZyYW5rIEdoZXJ5PC90ZXh0Pjwvc3ZnPg==" alt="Frank Ghery" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0QwQzhCRSIvPjx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMikiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkZyYW5rIEdoZXJ5PC90ZXh0Pjwvc3ZnPg=='">
+    <div class="scheda-info"><span class="scheda-nome">Frank Ghery</span></div>
+  </a>
+  <a href="#" class="scheda-card">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0M0QkJCMCIvPjx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMikiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk1hbmRhbGEgcGljY29sbzwvdGV4dD48L3N2Zz4=" alt="Mandala piccolo" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0M0QkJCMCIvPjx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMikiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk1hbmRhbGEgcGljY29sbzwvdGV4dD48L3N2Zz4='">
+    <div class="scheda-info"><span class="scheda-nome">Mandala piccolo</span></div>
+  </a>
+  <a href="#" class="scheda-card">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0JFQkFBRSIvPjx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMikiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk1hbmRhbGEgZ3JhbmRlPC90ZXh0Pjwvc3ZnPg==" alt="Mandala grande" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0JFQkFBRSIvPjx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMikiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk1hbmRhbGEgZ3JhbmRlPC90ZXh0Pjwvc3ZnPg=='">
+    <div class="scheda-info"><span class="scheda-nome">Mandala grande</span></div>
+  </a>
+  <a href="#" class="scheda-card">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0NDQjhCMCIvPjx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMikiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkFzdHJhdHRvIDE8L3RleHQ+PC9zdmc+" alt="Astratto 1" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0NDQjhCMCIvPjx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMikiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkFzdHJhdHRvIDE8L3RleHQ+PC9zdmc+'">
+    <div class="scheda-info"><span class="scheda-nome">Astratto 1</span></div>
+  </a>
+  </div>
+</div>
 <footer>
   <div class="ft-watermark">XØ</div>
   <div class="ft-grid">

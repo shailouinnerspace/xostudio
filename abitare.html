@@ -77,22 +77,40 @@ footer{padding:3.5rem 2.5rem 1.5rem;background:#EDE8E3;border-top:1px solid rgba
 .ft-col a:hover{color:#C4B6AD}
 .ft-bottom{max-width:950px;margin:2rem auto 0;display:flex;justify-content:space-between;padding-top:1.5rem;border-top:1px solid rgba(0,0,0,.06);font-size:.55rem;color:#888;letter-spacing:.05em;position:relative;z-index:2}
 @media(max-width:768px){.ft-grid{grid-template-columns:1fr;gap:1.5rem}.ft-bottom{flex-direction:column;gap:.5rem}.page-header{padding:7rem 1.5rem 3rem}}
+
+/* ── SCHEDE PROGETTI ── */
+.schede-section{padding:4vh 2.5rem 6vh;border-top:1px solid rgba(0,0,0,.06)}
+.schede-section h3{font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#C4B6AD;margin-bottom:2rem}
+.schede-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.scheda-card{position:relative;aspect-ratio:4/3;overflow:hidden;background:#EDE8E3;text-decoration:none;display:block}
+.scheda-card img{width:100%;height:100%;object-fit:cover;filter:brightness(.78);transition:transform .5s,filter .4s}
+.scheda-card:hover img{transform:scale(1.04);filter:brightness(.6)}
+.scheda-card .scheda-info{position:absolute;bottom:0;left:0;right:0;padding:1.2rem 1.5rem;background:linear-gradient(to top,rgba(0,0,0,.6) 0%,transparent 100%)}
+.scheda-card .scheda-nome{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;font-style:italic;color:#fff;line-height:1.2}
+.scheda-card.grande{aspect-ratio:16/6}
+.scheda-card.grande .scheda-nome{font-size:1.6rem}
+@media(max-width:600px){.schede-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="logo">XØ</a>
+  <a href="index.html" class="logo">X&#216;</a>
   <ul class="nav-links">
-    <li class="nav-drop"><a href="#">Progetti</a><div class="drop-menu"><a href="progetti-case.html">Case</a><a href="progetti-uffici.html">Uffici &amp; Spazi Professionali</a><a href="progetti-retail.html">Retail &amp; Hospitality</a><a href="progetti-brand.html">Brand &amp; Identity</a><a href="progetti-arte.html">Arte</a></div></li>
-    <li><a href="abitare.html" class="active">Abitare</a></li>
+    <li class="nav-drop"><a href="progetti.html">Progetti</a><div class="drop-menu"><a href="progetti-case.html">Case</a><a href="progetti-uffici.html">Uffici &amp; Spazi Professionali</a><a href="progetti-retail.html">Retail &amp; Hospitality</a><a href="progetti-brand.html">Brand &amp; Identity</a><a href="progetti-arte.html">Arte</a></div></li>
+    <li><a href="abitare.html">Abitare</a></li>
     <li><a href="spatial-identity.html">Spatial Identity</a></li>
     <li><a href="high-leverage.html">High-Leverage</a></li>
     <li><a href="brand.html">Brand</a></li>
     <li><a href="fashion-arte.html">Arte</a></li>
     <li><a href="contatti.html" class="contact-link">Contatti</a></li>
   </ul>
-  <div class="ham"><span></span><span></span><span></span></div>
+  <div class="ham" onclick="document.querySelector('.mob').classList.add('open')"><span></span><span></span><span></span></div>
+</nav>
+<div class="mob">
+  <button class="mob-x" onclick="this.parentElement.classList.remove('open')">&#10005;</button>
+  <a href="index.html">Home</a><a href="progetti.html">Progetti</a><a href="abitare.html">Abitare</a><a href="spatial-identity.html">Spatial Identity</a><a href="high-leverage.html">High-Leverage</a><a href="brand.html">Brand</a><a href="fashion-arte.html">Arte</a><a href="contatti.html">Contatti</a>
+</div>
 </nav>
 
 <div class="page-header">
@@ -101,11 +119,7 @@ footer{padding:3.5rem 2.5rem 1.5rem;background:#EDE8E3;border-top:1px solid rgba
   <p class="sub">Dove ogni spazio amplifica il tuo benessere e risveglia il tuo potenziale.</p>
 </div>
 
-<div class="foto-grid">
-  <img src="img/architetturaviva6.jpg" alt="Camera montagna">
-  <img src="img/architetturaviva7.jpg" alt="Bagno marmo">
-  <img src="img/architetturaviva8.jpg" alt="Cucina vetro">
-</div>
+
 
 <div class="section">
   <span class="section-label">Abitare Evoluto &amp; Home Biohacking</span>
@@ -128,11 +142,7 @@ footer{padding:3.5rem 2.5rem 1.5rem;background:#EDE8E3;border-top:1px solid rgba
   </ul>
 </div>
 
-<div class="foto-grid">
-  <img src="img/architetturaviva9.jpg" alt="Art nouveau">
-  <img src="img/architetturaviva1.jpg" alt="Coffee table">
-  <img src="img/architetturaviva4.jpg" alt="Chalet">
-</div>
+
 
 <div class="section">
   <span class="section-label">Architettura Viva</span>
@@ -155,6 +165,15 @@ footer{padding:3.5rem 2.5rem 1.5rem;background:#EDE8E3;border-top:1px solid rgba
   <a href="contatti.html" class="btn">Parliamone →</a>
 </div>
 
+<div class="schede-section">
+  <h3>Vai ai progetti</h3>
+  <div class="schede-grid">
+  <a href="progetti-case.html" class="scheda-card grande">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0M4QkZCNSIvPjx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMikiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNjb3ByaSBpIHByb2dldHRpIHJlc2lkZW56aWFsaSDihpI8L3RleHQ+PC9zdmc+" alt="Scopri i progetti residenziali →" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0M4QkZCNSIvPjx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMikiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNjb3ByaSBpIHByb2dldHRpIHJlc2lkZW56aWFsaSDihpI8L3RleHQ+PC9zdmc+'">
+    <div class="scheda-info"><span class="scheda-nome">Scopri i progetti residenziali →</span></div>
+  </a>
+  </div>
+</div>
 <footer>
   <div class="ft-watermark">XØ</div>
   <div class="ft-grid">
